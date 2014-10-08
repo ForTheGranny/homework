@@ -1,4 +1,1 @@
-home-work
-=========
-
-Home work checking
+Homework checking...
