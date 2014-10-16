@@ -7,7 +7,7 @@ import roman.homework.task2.Person;
  */
 public class ArrayHelper {
 
-      JoinUtil util;
+      JoinUtil<Person> util;
       Person[] p1;
       Person[] p2;
 
@@ -18,8 +18,13 @@ public class ArrayHelper {
      }
 
     public void compareTwoPersons(){
-        Person[] result = util.merge(this.p1,this.p2);
-        System.out.println(result.toString());
+        if(this.p1 != null && this.p2 != null) {
+            Person[] result = util.merge(this.p1, this.p2);
+            System.out.println(result.toString());
+        } else if( p1 == null)
+            System.out.println("Person p1 is null");
+          else
+            System.out.println("Person p2 is null");
     }
 
 
