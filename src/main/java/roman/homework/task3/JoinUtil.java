@@ -1,5 +1,7 @@
 package roman.homework.task3;
 
+import roman.homework.task3.my.exception.IllegalArrayForMergeOperation;
+
 import java.util.Arrays;
 
 /**
@@ -21,24 +23,23 @@ import java.util.Arrays;
 */
 public class JoinUtil {
 
-    static boolean isNull(int[] firstArray, int[] secondArray){
-        return (firstArray == null || secondArray == null);
+     public boolean isNull(int[] firstArray, int[] secondArray){
+         return (firstArray == null || secondArray == null);
     }
 
+     public boolean isAlreadyExist(int[] array, int value){
+         for(int number : array){
+             if(number == value)
+                 return true;
+         }
+         return false;
+     }
 
-    static boolean isAlreadyExist(int[] array, int value){
-        for(int number : array){
-            if (number == value)
-                return true;
-        }
-        return false;
-    }
 
-
-    static int[] innerJoin(int[] firstArray, int[] secondArray){
+     public int[] innerJoin(int[] firstArray, int[] secondArray){
         if(isNull(firstArray,secondArray))          // check references on NULL
             return new int[0];
-        int[] temp = (firstArray.length > secondArray.length) ? new int[secondArray.length] : new int[firstArray.length];      // to allocate the size for temp[] array precisely
+        int[] temp = new int[firstArray.length + secondArray.length];
         int counter = 0;            // added counter to know the precise size of matched results quantity in the temp[] array
         for (int f : firstArray)
             for (int s : secondArray) {
@@ -52,12 +53,12 @@ public class JoinUtil {
     }
 
 
-    static int[] outerJoin(int[] firstArray, int[] secondArray){
+     public int[] outerJoin(int[] firstArray, int[] secondArray){
         if (firstArray == null)
             return secondArray;          // check references on NULL
         if (secondArray == null)
             return firstArray;
-        int[] temp = new int[firstArray.length + secondArray.length]; // problematic part as int + int  ( 64 bit should be used - long[] )
+        int[] temp = new int[firstArray.length + secondArray.length]; // problematic part as int + int
         int[] result = new int[temp.length];
         System.arraycopy(firstArray,0, temp, 0, firstArray.length);   // copy both arrays to temp[]
         System.arraycopy(secondArray,0,temp, firstArray.length,secondArray.length);
@@ -75,7 +76,11 @@ public class JoinUtil {
     }
 
 
-    static int[] merge(int[] firstArray, int[] secondArray) {
+     public int[] merge(int[] firstArray, int[] secondArray) throws IllegalArrayForMergeOperation {
+         if (firstArray == null)
+             throw new IllegalArrayForMergeOperation("firstArray reference is null");          // check references on NULL
+         if (secondArray == null)
+             throw new IllegalArrayForMergeOperation("secondArray reference is null");
         int[] temp = new int[firstArray.length + secondArray.length];    // problematic part as int + int  ( 64 bit should be used - long[] )
         int[] result = new int[temp.length];
         System.arraycopy(firstArray,0, temp, 0, firstArray.length);   // copy both arrays to temp[]
