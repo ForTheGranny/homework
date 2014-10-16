@@ -1,5 +1,7 @@
 package roman.homework.task3;
 
+import roman.homework.task2.Person;
+
 import java.util.Arrays;
 
 /**
@@ -22,21 +24,27 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
+     JoinUtil util = new JoinUtil();
+     Person[] firstPersonList = new Person[10];a
+     Person[] secondPersonList = new Person[8];
+     ArrayHelper serviceDelegate = new ArrayHelper(firstPersonList,secondPersonList);
+     serviceDelegate.compareTwoPersons();
 
-        JoinUtil util = new JoinUtil();
+
         int[] firstArray = new int[] {1,5,4,23,65,32,78};
         int[] secondArray = new int[] {3,5,24,4,1,2,34,45,32,5};
-
+        int[] leftArray = new int[]{1,4,8,7,9};
+        int[] rightArray = new int[]{11,4,7,10,0};
 
         int[] res_inner = util.innerJoin(firstArray, secondArray);
         int[] res_outer = util.outerJoin(firstArray, secondArray);
         int[] res_merge = util.merge(firstArray, secondArray);
-        int[] res_left = util.leftJoin(firstArray, secondArray);
+        int[] left_join = util.leftJoin(leftArray,rightArray);
 
-        System.out.print("Inner - only equal elements from both arrays: " + Arrays.toString(res_inner));
-        System.out.print("\n"+ "Outer - only different elements from both arrays: " + Arrays.toString(res_outer));
-        System.out.print("\n"+ "Left - only left set and equal elements: " + Arrays.toString(res_left));
+        System.out.print("Equal elements are: " + Arrays.toString(res_inner));
+        System.out.print("\n"+ "Only different elements from both arrays: " + Arrays.toString(res_outer));
         System.out.print("\n"+ "Merge result: " + Arrays.toString(res_merge));
+        System.out.print("\n"+ "Left Union: " + Arrays.toString(left_join));.
 
 
     }

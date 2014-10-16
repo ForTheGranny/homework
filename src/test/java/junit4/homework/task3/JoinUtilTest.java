@@ -49,7 +49,6 @@ public class JoinUtilTest {
 
         // clean reference;
         util = null;
-
     }
 
     @Test
