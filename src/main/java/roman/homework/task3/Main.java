@@ -31,10 +31,13 @@ public class Main {
         int[] res_inner = util.innerJoin(firstArray, secondArray);
         int[] res_outer = util.outerJoin(firstArray, secondArray);
         int[] res_merge = util.merge(firstArray, secondArray);
+        int[] res_left = util.leftJoin(firstArray, secondArray);
 
         System.out.print("Inner - only equal elements from both arrays: " + Arrays.toString(res_inner));
         System.out.print("\n"+ "Outer - only different elements from both arrays: " + Arrays.toString(res_outer));
+        System.out.print("\n"+ "Left - only left set and equal elements: " + Arrays.toString(res_left));
         System.out.print("\n"+ "Merge result: " + Arrays.toString(res_merge));
+
 
     }
 }

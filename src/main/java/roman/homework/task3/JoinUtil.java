@@ -1,7 +1,5 @@
 package roman.homework.task3;
 
-import roman.homework.task3.enumeration.my.exception.IllegalArrayForMergeOperation;
-
 import java.util.Arrays;
 
 /**
@@ -27,7 +25,10 @@ public class JoinUtil {
          return (firstArray == null || secondArray == null);
     }
 
+
      public boolean isAlreadyExist(int[] array, int value){
+         if(array == null || array.length == 0)
+            return false;
          for(int number : array){
              if(number == value)
                  return true;
@@ -54,9 +55,9 @@ public class JoinUtil {
 
 
      public int[] outerJoin(int[] firstArray, int[] secondArray){
-        if (firstArray == null)
+        if (firstArray == null || firstArray.length == 0)
             return secondArray;          // check references on NULL
-        if (secondArray == null)
+        if (secondArray == null || firstArray.length == 0)
             return firstArray;
         int[] temp = new int[firstArray.length + secondArray.length]; // problematic part as int + int
         int[] result = new int[temp.length];
@@ -76,11 +77,11 @@ public class JoinUtil {
     }
 
 
-     public int[] merge(int[] firstArray, int[] secondArray) throws IllegalArrayForMergeOperation {
-         if (firstArray == null)
-             throw new IllegalArrayForMergeOperation("firstArray reference is null");          // check references on NULL
-         if (secondArray == null)
-             throw new IllegalArrayForMergeOperation("secondArray reference is null");
+     public int[] merge(int[] firstArray, int[] secondArray) {
+         if (firstArray == null || firstArray.length == 0)  // check references on NULL
+             return secondArray;
+         if (secondArray == null || secondArray.length == 0)
+             return firstArray;
         int[] temp = new int[firstArray.length + secondArray.length];    // problematic part as int + int  ( 64 bit should be used - long[] )
         int[] result = new int[temp.length];
         System.arraycopy(firstArray,0, temp, 0, firstArray.length);   // copy both arrays to temp[]
@@ -100,5 +101,18 @@ public class JoinUtil {
             }
         }
         return Arrays.copyOf(result,counter);
+    }
+
+
+    public int[] leftJoin(int[] leftArray, int[] rightArray){
+        if(leftArray == null || leftArray.length == 0)
+            return new int[0];
+        if(rightArray == null)
+            return leftArray;
+        int[] temp = innerJoin(leftArray,rightArray);
+        int[] sum = new int[leftArray.length + temp.length];
+        System.arraycopy(leftArray,0,sum,0,leftArray.length);
+        System.arraycopy(temp,0,sum,leftArray.length,temp.length);
+        return sum;
     }
 }
