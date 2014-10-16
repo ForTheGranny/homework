@@ -153,7 +153,7 @@ public class JoinUtilTest {
         // invoke method
         int[] actualResult = util.leftJoin(leftArray,rightArray);
         // assert
-        assertArrayEquals(expectedResult, actualResult);
+        assertArrayEquals("Fails if it does not return {1,4,8,7,9,4,7}",expectedResult, actualResult);
     }
 
 
@@ -169,7 +169,7 @@ public class JoinUtilTest {
         // invoke method
         int[] actualResult = util.leftJoin(leftArray,rightArray);
         // assert
-        assertArrayEquals(expectedResult, actualResult);
+        assertArrayEquals("Fails if it does not return an empty array",expectedResult, actualResult);
     }
 
     @Test
@@ -184,7 +184,7 @@ public class JoinUtilTest {
         // invoke method
         int[] actualResult = util.leftJoin(leftArray,rightArray);
         // assert
-        assertArrayEquals(expectedResult, actualResult);
+        assertArrayEquals("Fails if it does not return an empty array",expectedResult, actualResult);
     }
 }
 
