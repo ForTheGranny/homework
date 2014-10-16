@@ -6,27 +6,32 @@ package roman.homework.task2;
 public class Main {
 
     // Performs comparison for Persons using equals(), passed object can be checked using instanceof on type relation as well
-    private static boolean comparePersons(Person p1,Person p2){
-        if((p1 != null && p2 != null))
-            return p1.equals(p2);
-        else
-            return false;
-    }
+
 
     public static void main(String[] args){
-        Person p1 = new Person();
-        Person p2 = new Person();
+        Person p1 = new Person.Builder()
+                .firstName("Roman")
+                .secondName("Tereschenko")
+                .personAge(27)
+                .personPost(Position.DEVELOPER)
+                .build();
+
+        Person p2 = new Person.Builder()
+                .firstName("Tany")
+                .secondName("Voytenko")
+                .personAge(25)
+                .personPost(Position.DIRECTOR)
+                .build();
 
 
-        //
-        if(p1 != null && p2 != null) {
-            System.out.println("Comparison by equals() - " + comparePersons(p1, p2));
+
+            System.out.println("Comparison by equals() - " + " object1: " + p1 +"   object2: " +p2 + " result is: " + p1.equals(p2));
 
             // Compare persons using hashcode()
-            System.out.println("Comparison by hashcode() - " + (p1.hashCode()== p2.hashCode()));
+            System.out.println("Comparison by hashcode() - " + " object1: " + p1 +"   object2: " +p2 + " result is: " + (p1.hashCode()== p2.hashCode()));
 
             // Compare persons using == (by reference)
-            System.out.println("Comparison by == (reference) - " + (p1 == p2));
-        }
+            System.out.println("Comparison by == (reference) - " + " object1: " + p1 +"   object2: " +p2 + " result is: " + (p1 == p2));
+
     }
 }

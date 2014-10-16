@@ -1,6 +1,10 @@
 package roman.homework.task3;
 
+import roman.homework.task2.Person;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Roman Tereschenko on 10/13/2014.
@@ -21,26 +25,24 @@ import java.util.Arrays;
 */
 public class JoinUtil {
 
-     public boolean isNull(int[] firstArray, int[] secondArray){
-         return (firstArray == null || secondArray == null);
+     boolean isNull(int[] firstArray, int[] secondArray){
+        return (firstArray == null || secondArray == null);
     }
 
 
-     public boolean isAlreadyExist(int[] array, int value){
-         if(array == null || array.length == 0)
-            return false;
-         for(int number : array){
-             if(number == value)
-                 return true;
-         }
-         return false;
-     }
+     boolean isAlreadyExist(int[] array, int value){
+        for(int number : array){
+            if (number == value)
+                return true;
+        }
+        return false;
+    }
 
 
      public int[] innerJoin(int[] firstArray, int[] secondArray){
         if(isNull(firstArray,secondArray))          // check references on NULL
-            return new int[0];
-        int[] temp = new int[firstArray.length + secondArray.length];
+            return null;
+        int[] temp = (firstArray.length > secondArray.length) ? new int[secondArray.length] : new int[firstArray.length];      // to allocate the size for temp[] array precisely
         int counter = 0;            // added counter to know the precise size of matched results quantity in the temp[] array
         for (int f : firstArray)
             for (int s : secondArray) {
@@ -54,12 +56,12 @@ public class JoinUtil {
     }
 
 
-     public int[] outerJoin(int[] firstArray, int[] secondArray){
-        if (firstArray == null || firstArray.length == 0)
+     int[] outerJoin(int[] firstArray, int[] secondArray){
+        if (firstArray == null)
             return secondArray;          // check references on NULL
-        if (secondArray == null || secondArray.length == 0)
+        if (secondArray == null)
             return firstArray;
-        int[] temp = new int[firstArray.length + secondArray.length]; // problematic part as int + int
+        int[] temp = new int[firstArray.length + secondArray.length];
         int[] result = new int[temp.length];
         System.arraycopy(firstArray,0, temp, 0, firstArray.length);   // copy both arrays to temp[]
         System.arraycopy(secondArray,0,temp, firstArray.length,secondArray.length);
@@ -77,11 +79,7 @@ public class JoinUtil {
     }
 
 
-     public int[] merge(int[] firstArray, int[] secondArray) {
-         if (firstArray == null || firstArray.length == 0)  // check references on NULL
-             return secondArray;
-         if (secondArray == null || secondArray.length == 0)
-             return firstArray;
+     int[] merge(int[] firstArray, int[] secondArray) {
         int[] temp = new int[firstArray.length + secondArray.length];    // problematic part as int + int  ( 64 bit should be used - long[] )
         int[] result = new int[temp.length];
         System.arraycopy(firstArray,0, temp, 0, firstArray.length);   // copy both arrays to temp[]
@@ -103,11 +101,31 @@ public class JoinUtil {
         return Arrays.copyOf(result,counter);
     }
 
+    Person[] merge(Person[] p1, Person[] p2) {
+        if (p1 == null)
+            return p2;          // check references on NULL
+        if (p2 == null)
+            return p1;
+        Person[] temp = new Person[p1.length + p2.length];
+        Arrays.sort(p2, new Person.Builder().build());
+        int counter = 0;
+        for(Person first : p1){
+            if(Arrays.binarySearch(p2, first) < 0){
+                
+            }
+
+
+            }
+        }
+
+
+
+
 
     public int[] leftJoin(int[] leftArray, int[] rightArray){
-        if(leftArray == null || leftArray.length == 0)
+        if(leftArray == null || leftArray.length ==0)
             return new int[0];
-        if(rightArray == null || rightArray.length == 0)
+        if(rightArray == null)
             return leftArray;
         int[] temp = innerJoin(leftArray,rightArray);
         int[] sum = new int[leftArray.length + temp.length];
