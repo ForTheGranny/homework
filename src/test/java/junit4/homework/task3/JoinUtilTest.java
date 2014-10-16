@@ -81,4 +81,37 @@ public class JoinUtilTest {
         // invoke method on a class to test
         int[] actualResult = util.merge(null, secondArray);
     }
+    
+     @Test
+    public void testLeftUnion(){
+        // Input variables
+        int[] leftArray = new int[]{1,4,8,7,9};
+        int[] rightArray = new int[]{11,4,7,10,0};
+        int[] expectedValues = new int[]{1,4,8,7,9,4,7};
+
+        // init class
+        JoinUtil util = new JoinUtil();
+
+        // invoke method
+        int[] actualResult = util.leftJoin(leftArray,rightArray);
+
+        // assert
+        assertArrayEquals(expectedValues, actualResult);
+    }
+
+    @Test
+    public void testLeftUnionOnNull(){
+        // Input variables
+        int[] leftArray =  new int[0];
+        int[] rightArray = new int[]{11,4,7,10,0};
+        int[] expectedValues = new int[0];
+
+        // init class
+        JoinUtil util = new JoinUtil();
+
+        // invoke method
+        int[] actualResult = util.leftJoin(leftArray,rightArray);
+        // assert
+        assertArrayEquals(expectedValues, actualResult);
+    }
 }
