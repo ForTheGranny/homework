@@ -101,4 +101,16 @@ public class JoinUtil {
         }
         return Arrays.copyOf(result,counter);
     }
+    
+      public int[] leftJoin(int[] leftArray, int[] rightArray){
+        if(leftArray == null || leftArray.length ==0)
+            return new int[0];
+        if(rightArray == null)
+            return leftArray;
+        int[] temp = innerJoin(leftArray,rightArray);
+        int[] sum = new int[leftArray.length + temp.length];
+        System.arraycopy(leftArray,0,sum,0,leftArray.length);
+        System.arraycopy(temp,0,sum,leftArray.length,temp.length);
+        return sum;
+      }
 }
