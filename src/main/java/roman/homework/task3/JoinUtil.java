@@ -57,7 +57,7 @@ public class JoinUtil {
      public int[] outerJoin(int[] firstArray, int[] secondArray){
         if (firstArray == null || firstArray.length == 0)
             return secondArray;          // check references on NULL
-        if (secondArray == null || firstArray.length == 0)
+        if (secondArray == null || secondArray.length == 0)
             return firstArray;
         int[] temp = new int[firstArray.length + secondArray.length]; // problematic part as int + int
         int[] result = new int[temp.length];
@@ -107,7 +107,7 @@ public class JoinUtil {
     public int[] leftJoin(int[] leftArray, int[] rightArray){
         if(leftArray == null || leftArray.length == 0)
             return new int[0];
-        if(rightArray == null)
+        if(rightArray == null || rightArray.length == 0)
             return leftArray;
         int[] temp = innerJoin(leftArray,rightArray);
         int[] sum = new int[leftArray.length + temp.length];
