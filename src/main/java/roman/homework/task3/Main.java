@@ -25,10 +25,10 @@ public class Main {
 
     public static void main(String[] args) {
      JoinUtil util = new JoinUtil();
-     Person[] firstPersonList = new Person[10];a
+     Person[] firstPersonList = new Person[10];
      Person[] secondPersonList = new Person[8];
-     ArrayHelper serviceDelegate = new ArrayHelper(firstPersonList,secondPersonList);
-     serviceDelegate.compareTwoPersons();
+//     ArrayHelper serviceDelegate = new ArrayHelper(firstPersonList,secondPersonList);
+//     serviceDelegate.compareTwoPersons();
 
 
         int[] firstArray = new int[] {1,5,4,23,65,32,78};
@@ -44,7 +44,7 @@ public class Main {
         System.out.print("Equal elements are: " + Arrays.toString(res_inner));
         System.out.print("\n"+ "Only different elements from both arrays: " + Arrays.toString(res_outer));
         System.out.print("\n"+ "Merge result: " + Arrays.toString(res_merge));
-        System.out.print("\n"+ "Left Union: " + Arrays.toString(left_join));.
+        System.out.print("\n"+ "Left Union: " + Arrays.toString(left_join));
 
 
     }

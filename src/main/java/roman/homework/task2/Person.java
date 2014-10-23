@@ -107,7 +107,7 @@ public class Person implements Comparator {
         }
 
         public Builder secondName(String secondName){
-            this.firstName = secondName;
+            this.secondName = secondName;
             return this;
         }
 
