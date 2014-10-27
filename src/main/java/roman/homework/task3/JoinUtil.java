@@ -102,7 +102,7 @@ public class JoinUtil<Person> {
         return Arrays.copyOf(result, counter);
     }
 
-    List<Person> merge(List<Person> list1, List<Person> list2) {
+    public List<Person> merge(List<Person> list1, List<Person> list2) {
         List<Person> result = new ArrayList<Person>();
         for (Person first : list1) {
             if (list2.contains(first)) {
