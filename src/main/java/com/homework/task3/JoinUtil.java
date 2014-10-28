@@ -1,10 +1,7 @@
-package roman.homework.task3;
-
-import roman.homework.task2.Person;
+package com.homework.task3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**

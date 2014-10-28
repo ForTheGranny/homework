@@ -1,7 +1,7 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import roman.homework.task3.JoinUtil;
+import com.homework.task3.JoinUtil;
 
 import static org.junit.Assert.*;
 

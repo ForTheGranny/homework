@@ -1,6 +1,6 @@
-package roman.homework.task3;
+package com.homework.task3;
 
-import roman.homework.task2.Person;
+import com.homework.task2.Person;
 
 import java.util.Arrays;
 

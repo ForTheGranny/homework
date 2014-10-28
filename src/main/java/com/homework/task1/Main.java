@@ -1,4 +1,4 @@
-package roman.homework.task1;
+package com.homework.task1;
 
 import java.util.ArrayList;
 import java.util.Iterator;

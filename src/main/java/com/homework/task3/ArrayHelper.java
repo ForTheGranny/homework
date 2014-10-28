@@ -1,6 +1,4 @@
-package roman.homework.task3;
-
-import roman.homework.task2.Person;
+package com.homework.task3;
 
 import java.util.List;
 

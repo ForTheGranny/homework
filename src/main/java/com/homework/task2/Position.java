@@ -1,4 +1,4 @@
-package roman.homework.task2;
+package com.homework.task2;
 
 /**
  * Created by home on 10/9/2014.

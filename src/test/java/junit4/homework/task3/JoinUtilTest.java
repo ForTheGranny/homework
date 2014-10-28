@@ -3,11 +3,10 @@ package junit4.homework.task3;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.*;
-import roman.homework.task2.Person;
-import roman.homework.task4.JoinUtil;
-import roman.homework.task4.PersonHelper;
+import com.homework.task2.Person;
+import com.homework.task4.JoinUtil;
+import com.homework.task4.PersonHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class JoinUtilTest {
@@ -20,12 +19,20 @@ public class JoinUtilTest {
     delegateService = new PersonHelper(util);
     }
 
-    @Test(groups = {"PersonsTests"}, dataProvider ="PersonsProvider", dataProviderClass = DataForJoinUtilTest.class)
-    public void testInnerJoin(List<Person> p1, List<Person> p2, ArrayList<Person> expectedResult) throws Exception {
+    @Test(groups = {"PersonsTests"}, dataProvider ="DataForOnlyEqualPersons", dataProviderClass = DataForJoinUtilTest.class)
+    public void testInnerJoin(List<Person> p1, List<Person> p2, List<Person> expectedResult) throws Exception {
         // invoke method on a class to test
-        List<Person> actualResult = delegateService.onlyEqualPersons(p1, p2);
+        List<Person> actualResult = delegateService.onlyEqualPersons(p1,p2);
         // assert return value
-        assertEquals(actualResult,expectedResult,"Fails when one of array's reference is null");
+        assertEquals(actualResult,expectedResult);
+    }
+
+    @Test(groups = {"PersonsTests"}, dataProvider ="DataForOnlyDifferentPersons", dataProviderClass = DataForJoinUtilTest.class)
+    public void testOuterJoin(List<Person> p1, List<Person> p2, List<Person> expectedResult) throws Exception {
+        // invoke method on a class to test
+        List<Person> actualResult = delegateService.onlyDifferentPersons(p1,p2);
+        // assert return value
+        assertEquals(actualResult,expectedResult);
     }
 }
 
