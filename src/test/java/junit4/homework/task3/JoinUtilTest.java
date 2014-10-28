@@ -34,5 +34,13 @@ public class JoinUtilTest {
         // assert return value
         assertEquals(actualResult,expectedResult);
     }
+
+    @Test(groups = {"PersonsTests"}, dataProvider ="DataForMergeOnPersons", dataProviderClass = DataForJoinUtilTest.class)
+    public void testMerge(List<Person> p1, List<Person> p2, List<Person> expectedResult) throws Exception {
+        // invoke method on a class to test
+        List<Person> actualResult = delegateService.mergePersons(p1,p2);
+        // assert return value
+        assertEquals(actualResult,expectedResult);
+    }
 }
 
